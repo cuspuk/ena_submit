@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pydantic = "*"
+pydantic-settings = "*"
+lxml = "*"
+pydantic-xml = "*"
+loguru = "*"
+requests = "*"
+
+[dev-packages]
+pytest = "*"
+pytest-mock = "*"
+
+[requires]
+python_version = "3.12"
