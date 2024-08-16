@@ -10,8 +10,8 @@ class APISubmissionService(AbstractAPISubmissionService):
         else:
             url = 'https://www.ebi.ac.uk/ena/submit/drop-box/submit/'
 
-        # return requests.post(
-        #     url,
-        #     auth=(ena_user, ena_pass),
-        #     files={key: open(path) for key, path in files.items()}
-        # )
+        return requests.post(
+            url,
+            auth=(ena_user, ena_pass),
+            files={key: open(path) for key, path in files.items()}
+        )

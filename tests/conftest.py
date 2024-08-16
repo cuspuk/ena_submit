@@ -1,9 +1,10 @@
+import pytest
 from requests import Response
 
 from domain.services.abstract_api_submission_service import AbstractAPISubmissionService
 
 
-class MockENASubmissionService(AbstractAPISubmissionService):
+class MockAPISubmissionService(AbstractAPISubmissionService):
     def submit_files(self, files: dict[str, str], ena_user: str, ena_pass: str, test: bool) -> Response:
         mock_response = Response()
         mock_response.status_code = 200
@@ -21,3 +22,8 @@ class MockENASubmissionService(AbstractAPISubmissionService):
                     </RECEIPT>
                 """
         return mock_response
+
+
+@pytest.fixture(scope='function')
+def mock_api_submission_service():
+    return MockAPISubmissionService()
