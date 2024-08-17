@@ -5,7 +5,7 @@ from domain.entities.sample_registration import SampleRegistration
 from use_cases.register_sample_to_ena import register_sample_to_ena
 
 
-def test_register_sample_to_ena(mock_api_submission_service):
+def test_register_sample_to_ena(mock_api_sample_submission_service):
 
     sample_set_xml_path = os.path.join(settings.ROOT_DIR_PATH, 'tests/data/sample.xml')
     submission_xml_path = os.path.join(settings.ROOT_DIR_PATH, 'tests/data/submission.xml')
@@ -18,7 +18,7 @@ def test_register_sample_to_ena(mock_api_submission_service):
         ena_password='test_pass',
         results_dir=results_dir,
         test=True,
-        api_submission_service=mock_api_submission_service
+        api_submission_service=mock_api_sample_submission_service
     )
 
     sample_accessions = register_sample_to_ena(sample_registration)

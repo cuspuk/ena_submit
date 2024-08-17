@@ -4,7 +4,7 @@ import requests
 
 from core.loguru import logger
 from adapters.get_biosample_accession_via_api import fetch_biosample_accession
-from schemas.sample_accessions import SampleAccessions
+from schemas.accessions import SampleAccessions
 from use_cases.receipt_utils.parse_receipt import parse_receipt
 
 
@@ -16,7 +16,7 @@ def get_accession_inside_double_quotes_from_log(log_str: str, pattern: str) -> s
         raise Exception(f'Failed to parse accession from log string {log_str}. Provided {pattern=}')
 
 
-def parse_accessions_from_response(response: requests.Response) -> SampleAccessions:
+def parse_sample_accessions_from_response(response: requests.Response) -> SampleAccessions:
     """
     Response is in XML format looking sth like this:
 
@@ -68,7 +68,8 @@ def parse_accessions_from_response(response: requests.Response) -> SampleAccessi
                     if pattern in msg.text:
                         submission_accession = get_accession_inside_double_quotes_from_log(pattern=pattern,
                                                                                            log_str=msg.text)
-                        logger.info(f'Sample has already been submitted. Accession: {submission_accession}')
+                        logger.warning(f'Duplicate submission detected: Sample is already submitted. Accession: '
+                                       f'{submission_accession}')
                         biosample_accession = fetch_biosample_accession(submission_accession)
                         return SampleAccessions(
                             submission_accession=submission_accession,

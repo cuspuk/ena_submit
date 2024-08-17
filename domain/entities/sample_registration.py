@@ -7,8 +7,8 @@ from core.loguru import logger
 from domain.services.abstract_api_submission_service import AbstractAPISubmissionService
 from exceptions import ResponseError
 from adapters.api_submission_service import APISubmissionService
-from schemas.sample_accessions import SampleAccessions
-from use_cases.receipt_utils.parse_sample_accessions import parse_accessions_from_response
+from schemas.accessions import SampleAccessions
+from use_cases.receipt_utils.parse_sample_accessions import parse_sample_accessions_from_response
 from use_cases.receipt_utils.save_receipt import save_receipt
 from use_cases.validate_xml_file import validate_xml_file
 
@@ -40,13 +40,13 @@ class SampleRegistration(BaseModel):
         if r.status_code != 200:
             raise ResponseError(response=r)
 
-        sample_accessions = parse_accessions_from_response(r)
-        logger.info(
-            f'''Sample has been registered into ENA. Sample accession: {sample_accessions.submission_accession} 
-                Biosample accession: {sample_accessions.biosample_accession}''')
-
         receipt_path = os.path.join(self.results_dir, 'sample_receipt.xml')
         save_receipt(text=r.text, receipt_path=receipt_path)
         logger.info(f'Sample receipt has been saved to: {receipt_path}')
+
+        sample_accessions = parse_sample_accessions_from_response(r)
+        logger.info(
+            f'Sample has been registered into ENA. Sample accession: {sample_accessions.submission_accession} '
+            f'Biosample accession: {sample_accessions.biosample_accession}')
 
         return sample_accessions
