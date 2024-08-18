@@ -63,7 +63,7 @@ class MockWebinCLISubmissionService(WebinCLISubmissionService):
                             -context {context} \
                             -manifest {manifest_json_path} \
                             -validate \
-                            -outputDir {os.path.dirname(log_dir_path)} \
+                            -outputDir {log_dir_path} \
                             {run_type} > {validation_log_path}'
         )
         if exit_code == 0:
