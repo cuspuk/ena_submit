@@ -2,11 +2,11 @@ import os
 
 from pydantic import BaseModel, ConfigDict
 
+from adapters.api_submission_service import APISubmissionService
 from core.config import settings
 from core.loguru import logger
 from domain.services.abstract_api_submission_service import AbstractAPISubmissionService
 from exceptions import ResponseError
-from adapters.api_submission_service import APISubmissionService
 from schemas.accessions import SampleAccessions
 from use_cases.receipt_utils.parse_sample_accessions import parse_sample_accessions_from_response
 from use_cases.receipt_utils.save_receipt import save_receipt
@@ -44,7 +44,8 @@ class SampleRegistration(BaseModel):
         save_receipt(text=r.text, receipt_path=receipt_path)
         logger.info(f'Sample receipt has been saved to: {receipt_path}')
 
-        sample_accessions = parse_sample_accessions_from_response(r)
+        sample_accessions = parse_sample_accessions_from_response(r, ena_user=self.ena_username,
+                                                                  ena_pass=self.ena_password)
         logger.info(
             f'Sample has been registered into ENA. Sample accession: {sample_accessions.submission_accession} '
             f'Biosample accession: {sample_accessions.biosample_accession}')

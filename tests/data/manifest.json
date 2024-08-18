@@ -1,0 +1,11 @@
+{
+  "study": "PRJEB72521",
+  "sample": "ERS30843922",
+  "assemblyname": "uvzsr-PT_24_00014-A12-AR_24_00000940",
+  "assembly_type": "isolate",
+  "coverage": 384.5134,
+  "program": "unicycler,spades",
+  "platform": "ILLUMINA",
+  "fasta": "/Users/oliverkubicka/Desktop/cuspuk/data/prod/uvzsr/PT_24_00014/A12-AR_24_00000940-antimicrobial_resistance-v2.20.0_v1-37702/assembly/assembly.fasta.gz",
+  "moleculetype": "genomic DNA"
+}

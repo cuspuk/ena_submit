@@ -1,7 +1,14 @@
+import os
+from typing import Literal
+
 import pytest
 from requests import Response
 
+from adapters.webin_cli_submission_service import WebinCLISubmissionService
+from core.loguru import logger
 from domain.services.abstract_api_submission_service import AbstractAPISubmissionService
+from exceptions import WebinCLIFileValidationError
+from tests.config import test_settings
 
 
 class MockAPISampleSubmissionService(AbstractAPISubmissionService):
@@ -43,6 +50,33 @@ class MockAPIRawReadsSubmissionService(AbstractAPISubmissionService):
         return mock_response
 
 
+class MockWebinCLISubmissionService(WebinCLISubmissionService):
+    def validate_assembly_manifest(self, manifest_json_path: str, log_dir_path: str, test: bool, ena_user: str,
+                                   ena_pass: str,
+                                   context: Literal['genome', 'transcriptome', 'sequence', 'reads'] = 'genome') -> None:
+        validation_log_path = os.path.join(log_dir_path, 'ena_webin_cli_validation.log')
+        run_type = '-test' if test else ''
+        exit_code = os.system(
+            f'{test_settings.ENA_WEBIN_CLI} \
+                            -username {test_settings.ENA_USER} \
+                            -password {test_settings.ENA_PASS} \
+                            -context {context} \
+                            -manifest {manifest_json_path} \
+                            -validate \
+                            -outputDir {os.path.dirname(log_dir_path)} \
+                            {run_type} > {validation_log_path}'
+        )
+        if exit_code == 0:
+            logger.info('Assembly Manifest have been validated successfully')
+        else:
+            raise WebinCLIFileValidationError(log_path=log_dir_path)
+
+    def submit_assembly_manifest(self, manifest_json_path: str, log_dir_path: str, test: bool, ena_user: str,
+                                 ena_pass: str,
+                                 context: Literal['genome', 'transcriptome', 'sequence', 'reads'] = 'genome') -> None:
+        pass
+
+
 @pytest.fixture(scope='function')
 def mock_api_sample_submission_service():
     return MockAPISampleSubmissionService()
@@ -51,3 +85,8 @@ def mock_api_sample_submission_service():
 @pytest.fixture(scope='function')
 def mock_api_raw_reads_submission_service():
     return MockAPIRawReadsSubmissionService()
+
+
+@pytest.fixture(scope='function')
+def mock_webin_cli_submission_service():
+    return MockWebinCLISubmissionService()

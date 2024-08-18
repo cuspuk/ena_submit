@@ -2,7 +2,7 @@ import requests
 from requests.auth import HTTPBasicAuth
 
 
-def fetch_biosample_accession(sample_accession: str, ena_user: str, ena_pass: str) -> str:
+def fetch_biosample_accession(sample_accession: str, ena_user: str, ena_pass: str) -> str:  # TODO: change to class
     response = requests.get(
         f'https://www.ebi.ac.uk/ena/submit/drop-box/cli/reference/sample/{sample_accession}',
         headers={'Accept': 'application/json'},

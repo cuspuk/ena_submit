@@ -1,0 +1,33 @@
+<SUBMISSION_SET>
+  <SUBMISSION>
+    <ACTIONS>
+      <ACTION>
+        <ADD />
+      </ACTION>
+    </ACTIONS>
+    <SUBMISSION_ATTRIBUTES>
+      <SUBMISSION_ATTRIBUTE>
+        <TAG>ENA-SUBMISSION-TOOL</TAG>
+        <VALUE>WebinCli:7.3.1</VALUE>
+      </SUBMISSION_ATTRIBUTE>
+      <SUBMISSION_ATTRIBUTE>
+        <TAG>ENA-MANIFEST-FILE</TAG>
+        <VALUE><![CDATA[{
+  "study": "PRJEB72521",
+  "sample": "ERS30843922",
+  "assemblyname": "uvzsr-PT_24_00014-A12-AR_24_00000940",
+  "assembly_type": "isolate",
+  "coverage": 384.5134,
+  "program": "unicycler,spades",
+  "platform": "ILLUMINA",
+  "fasta": "/Users/oliverkubicka/Desktop/cuspuk/data/prod/uvzsr/PT_24_00014/A12-AR_24_00000940-antimicrobial_resistance-v2.20.0_v1-37702/assembly/assembly.fasta.gz",
+  "moleculetype": "genomic DNA"
+}]]></VALUE>
+      </SUBMISSION_ATTRIBUTE>
+      <SUBMISSION_ATTRIBUTE>
+        <TAG>ENA-MANIFEST-FILE-MD5</TAG>
+        <VALUE>dfb4517308c9c9147ab0d682807c1f1d</VALUE>
+      </SUBMISSION_ATTRIBUTE>
+    </SUBMISSION_ATTRIBUTES>
+  </SUBMISSION>
+</SUBMISSION_SET>

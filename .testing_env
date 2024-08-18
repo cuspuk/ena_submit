@@ -1,0 +1,3 @@
+ENA_WEBIN_CLI='java -jar /Users/oliverkubicka/Desktop/cuspuk/webin-cli-7.3.1.jar'
+ENA_USER='Webin-58318'
+ENA_PASS='It_will_never_ever_be_found!'
