@@ -1,4 +1,5 @@
 .env
+.testing_env
 .idea
 logs/
 *pycache*

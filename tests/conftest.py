@@ -5,10 +5,10 @@ import pytest
 from requests import Response
 
 from adapters.webin_cli_submission_service import WebinCLISubmissionService
+from core.config import settings
 from core.loguru import logger
 from domain.services.abstract_api_submission_service import AbstractAPISubmissionService
 from exceptions import WebinCLIFileValidationError
-from tests.config import test_settings
 
 
 class MockAPISampleSubmissionService(AbstractAPISubmissionService):
@@ -57,9 +57,9 @@ class MockWebinCLISubmissionService(WebinCLISubmissionService):
         validation_log_path = os.path.join(log_dir_path, 'ena_webin_cli_validation.log')
         run_type = '-test' if test else ''
         exit_code = os.system(
-            f'{test_settings.ENA_WEBIN_CLI} \
-                            -username {test_settings.ENA_USER} \
-                            -password {test_settings.ENA_PASS} \
+            f'{settings.ENA_WEBIN_CLI} \
+                            -username {ena_user} \
+                            -password {ena_pass} \
                             -context {context} \
                             -manifest {manifest_json_path} \
                             -validate \

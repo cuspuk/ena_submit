@@ -26,7 +26,7 @@ class WebinCLISubmissionService(AbstractWebinCLISubmissionService):
                             -context {context} \
                             -manifest {manifest_json_path} \
                             -validate \
-                            -outputDir {os.path.dirname(log_dir_path)} \
+                            -outputDir {log_dir_path} \
                             {run_type} > {validation_log_path}'
         )
         if exit_code == 0:
@@ -45,7 +45,7 @@ class WebinCLISubmissionService(AbstractWebinCLISubmissionService):
                     -context {context} \
                     -manifest {manifest_json_path} \
                     -submit \
-                    -outputDir {os.path.dirname(log_dir_path)} \
+                    -outputDir {log_dir_path} \
                     {run_type} > {submit_log_path}'
         )
         if exit_code == 0:
