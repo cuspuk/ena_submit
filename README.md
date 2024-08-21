@@ -5,7 +5,7 @@ This repository contains a Python script designed to automate the submission pro
 ## Table of Contents
 - [Overview](#overview)
 - [Submission Process](#submission-process)
-  - [Flowchart Diagrams](#flowchart-diagram)
+  - [Flowchart Diagram](#flowchart-diagram)
   - [1. Register Sample](#1-sample-registration)
   - [2. Submit Raw Reads](#2-submit-raw-reads)
   - [3. Submit Assembly](#3-submit-assembly)
