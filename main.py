@@ -18,7 +18,7 @@ from use_cases.upload_read_files_to_ena import upload_read_files_to_ena
 
 def parse_arguments():
     parser = argparse.ArgumentParser(
-        description='This script processes input files and information for ENA submission using a configuration file.'
+        description='This script processes config file for ENA submission and submits the data to ENA.'
     )
 
     parser.add_argument('--config', type=str, required=True, help='Path to the configuration JSON file.')
