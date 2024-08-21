@@ -1,22 +1,19 @@
 import argparse
 import json
-from pydantic import BaseModel
-from typing import List
 
-from schemas.read_file import File
-
-
-class Config(BaseModel):
-    ena_username: str
-    ena_password: str
-    results_dir: str
-    test: str
-    sample_set_xml_path: str
-    submission_xml_path: str
-    experiment_set_xml_path: str
-    run_set_xml_path: str
-    manifest_json_path: str
-    read_files: List[File]
+from adapters.api_submission_service import APISubmissionService
+from adapters.ftp_submission_service import FTPSubmissionService
+from adapters.webin_cli_submission_service import WebinCLISubmissionService
+from core.loguru import logger
+from domain.entities.assembly_submission import AssemblySubmission
+from domain.entities.ftp_read_files_upload import FTPReadFilesUpload
+from domain.entities.raw_reads_submission import RawReadsSubmission
+from domain.entities.sample_registration import SampleRegistration
+from schemas.submit_config import SubmitConfig
+from use_cases.register_sample_to_ena import register_sample_to_ena
+from use_cases.submit_assembly_to_ena import submit_assembly_to_ena
+from use_cases.submit_raw_reads_to_ena import submit_raw_reads_to_ena
+from use_cases.upload_read_files_to_ena import upload_read_files_to_ena
 
 
 def parse_arguments():
@@ -31,22 +28,55 @@ def parse_arguments():
     return args
 
 
-def load_config(config_path: str) -> Config:
+def load_submit_config(config_path: str) -> SubmitConfig:
     with open(config_path, 'r') as f:
         config_data = json.load(f)
-        config = Config(**config_data)
+        try:
+            config = SubmitConfig(**config_data)
+        except Exception as e:
+            raise ValueError(
+                f'Invalid configuration file. Please check the configuration file and try again. Error: {e}')
     return config
 
 
 def main():
     args = parse_arguments()
-    config = load_config(args.config)
+    try:
+        submit_config = load_submit_config(args.config)
+    except Exception as e:
+        logger.info(e)
+        return
 
-    print("ENA Username:", config.ena_username)
-    print("Results Directory:", config.results_dir)
-    print("Read Files:")
-    for file in config.read_files:
-        print(f" - Filepath: {file.absolute_filepath}, Filename: {file.target_filename}, Type: {file.filetype}")
+    upload_read_files_to_ena(
+        ftp_read_files_upload=FTPReadFilesUpload(
+            **submit_config.dict(),
+            ena_ftp_upload_dir='/',
+            ftp_submission_service=FTPSubmissionService()
+        )
+    )
+
+    sample_accessions = register_sample_to_ena(
+        sample_registration=SampleRegistration(
+            **submit_config.dict(),
+            api_submission_service=APISubmissionService()
+        )
+    )
+
+    submit_raw_reads_to_ena(
+        raw_reads_submission=RawReadsSubmission(
+            **submit_config.dict(),
+            api_submission_service=APISubmissionService()
+        ),
+        submission_accession=sample_accessions.submission_accession
+    )
+
+    submit_assembly_to_ena(
+        assembly_submission=AssemblySubmission(
+            **submit_config.dict(),
+            webin_cli_submission_service=WebinCLISubmissionService()
+        ),
+        submission_accession=sample_accessions.submission_accession
+    )
 
 
 if __name__ == "__main__":

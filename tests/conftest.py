@@ -52,12 +52,12 @@ class MockAPIRawReadsSubmissionService(AbstractAPISubmissionService):
 
 class MockWebinCLISubmissionService(WebinCLISubmissionService):
     def validate_assembly_manifest(self, manifest_json_path: str, log_dir_path: str, test: bool, ena_user: str,
-                                   ena_pass: str,
+                                   ena_pass: str, webin_cli_path: str,
                                    context: Literal['genome', 'transcriptome', 'sequence', 'reads'] = 'genome') -> None:
         validation_log_path = os.path.join(log_dir_path, 'ena_webin_cli_validation.log')
         run_type = '-test' if test else ''
         exit_code = os.system(
-            f'{settings.ENA_WEBIN_CLI} \
+            f'{webin_cli_path} \
                             -username {ena_user} \
                             -password {ena_pass} \
                             -context {context} \
@@ -72,7 +72,7 @@ class MockWebinCLISubmissionService(WebinCLISubmissionService):
             raise WebinCLIFileValidationError(log_path=log_dir_path)
 
     def submit_assembly_manifest(self, manifest_json_path: str, log_dir_path: str, test: bool, ena_user: str,
-                                 ena_pass: str,
+                                 ena_pass: str, webin_cli_path: str,
                                  context: Literal['genome', 'transcriptome', 'sequence', 'reads'] = 'genome') -> None:
         pass
 

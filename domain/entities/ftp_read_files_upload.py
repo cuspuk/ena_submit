@@ -10,7 +10,7 @@ from schemas.read_file import File
 
 
 class FTPReadFilesUpload(BaseModel):
-    read_files: list[File]
+    reads: list[File]
     ena_username: str
     ena_password: str
     ena_ftp_upload_dir: str
@@ -20,7 +20,7 @@ class FTPReadFilesUpload(BaseModel):
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
     def upload_read_files(self) -> None:
-        for read_file in self.read_files:
+        for read_file in self.reads:
             if not os.path.exists(read_file.absolute_filepath):
                 raise ReadsExportMissingFileError(full_path=read_file.absolute_filepath)
 

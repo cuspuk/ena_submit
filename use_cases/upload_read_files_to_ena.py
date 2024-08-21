@@ -1,6 +1,5 @@
-from domain.entities.raw_reads_submission import RawReadsSubmission
-from schemas.accessions import RawReadsAccession
+from domain.entities.ftp_read_files_upload import FTPReadFilesUpload
 
 
-def upload_read_files_to_ena(raw_reads_submission: RawReadsSubmission):
-    raw_reads_submission.register_raw_reads()
+def upload_read_files_to_ena(ftp_read_files_upload: FTPReadFilesUpload):
+    ftp_read_files_upload.upload_read_files()

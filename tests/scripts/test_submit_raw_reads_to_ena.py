@@ -22,6 +22,9 @@ def test_submit_raw_reads_to_ena(mock_api_raw_reads_submission_service):
         api_submission_service=mock_api_raw_reads_submission_service
     )
 
-    raw_reads_accession = submit_raw_reads_to_ena(raw_reads_submission)
+    raw_reads_accession = submit_raw_reads_to_ena(
+        raw_reads_submission=raw_reads_submission,
+        submission_accession='ERS30843922'
+    )
 
     assert raw_reads_accession.experiment_accession == 'ERX2151578'

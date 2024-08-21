@@ -15,12 +15,13 @@ def test_submit_assembly_to_ena(mock_webin_cli_submission_service):
         manifest_json_path=manifest_json_path,
         ena_username=test_settings.ENA_USER,
         ena_password=test_settings.ENA_PASS,
+        webin_cli_path=test_settings.WEBIN_CLI_PATH,
         results_dir=results_dir,
         test=True,
         webin_cli_submission_service=mock_webin_cli_submission_service
     )
 
     try:
-        submit_assembly_to_ena(assembly_submission)
+        submit_assembly_to_ena(assembly_submission=assembly_submission, submission_accession='ERS30843922')
     except WebinCLIFileValidationError:
         assert False, 'WebinCLIFileValidationError was raised!'
