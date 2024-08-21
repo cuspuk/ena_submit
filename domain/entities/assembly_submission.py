@@ -11,7 +11,7 @@ class AssemblySubmission(BaseModel):
     ena_password: str
     results_dir: str
     test: bool
-    webin_cli_submission_service: AbstractWebinCLISubmissionService = WebinCLISubmissionService()
+    webin_cli_submission_service: AbstractWebinCLISubmissionService
 
     model_config = ConfigDict(arbitrary_types_allowed=True)
 

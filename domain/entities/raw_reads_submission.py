@@ -21,7 +21,7 @@ class RawReadsSubmission(BaseModel):
     ena_password: str
     results_dir: str
     test: bool
-    api_submission_service: AbstractAPISubmissionService = APISubmissionService()
+    api_submission_service: AbstractAPISubmissionService
 
     model_config = ConfigDict(arbitrary_types_allowed=True)
 

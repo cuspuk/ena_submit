@@ -2,7 +2,6 @@ import os
 
 from pydantic import BaseModel, ConfigDict
 
-from adapters.api_submission_service import APISubmissionService
 from core.config import settings
 from core.loguru import logger
 from domain.services.abstract_api_submission_service import AbstractAPISubmissionService
@@ -20,7 +19,7 @@ class SampleRegistration(BaseModel):
     ena_password: str
     results_dir: str
     test: bool
-    api_submission_service: AbstractAPISubmissionService = APISubmissionService()
+    api_submission_service: AbstractAPISubmissionService
 
     model_config = ConfigDict(arbitrary_types_allowed=True)
 

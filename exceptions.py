@@ -15,3 +15,9 @@ class WebinCLIFileUploadError(Exception):
 class WebinCLIFileValidationError(Exception):
     def __init__(self, log_path: str):
         super().__init__(f'Failed to validate file via webin-cli. Please check log at: {log_path}')
+
+
+class ReadsExportMissingFileError(Exception):
+    def __init__(self, *, full_path: str):
+        message = f"Could not export file {full_path=} to ENA FTP as the file does not exist"
+        super().__init__(message)

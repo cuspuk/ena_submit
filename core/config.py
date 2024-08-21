@@ -8,11 +8,9 @@ class Settings(BaseSettings):
     # Submission credentials
     ROOT_DIR_PATH: pathlib.Path = pathlib.Path().resolve()
     XSD_SCHEMAS_PATH: pathlib.Path = os.path.join(ROOT_DIR_PATH, 'schemas', 'xsd_schemas')
-    # if you downloaded it locally -> 'java -jar /webin-cli.jar'
-    ENA_WEBIN_CLI: str = (
-        f'docker run --rm -u 1000:1000 -e PV_DATA_DIR=/pv_data '
-        f'-v {os.path.join(ROOT_DIR_PATH, "testing", "pv_data")}:{os.path.join(ROOT_DIR_PATH, "testing", "pv_data")} '
-        f'ena_webin_cli')
+
+    ENA_HOST: str = 'webin2.ebi.ac.uk'
+    ENA_WEBIN_CLI: str
 
     LOGGING_FILE: str = os.path.join('logs', 'logs.txt')
 
