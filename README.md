@@ -5,7 +5,6 @@ This repository contains a Python script designed to automate the submission pro
 ## Table of Contents
 - [Overview](#overview)
 - [Submission Process](#submission-process)
-  - [Flowchart Diagram](#flowchart-diagram)
   - [1. Register Sample](#1-sample-registration)
   - [2. Submit Raw Reads](#2-submit-raw-reads)
   - [3. Submit Assembly](#3-submit-assembly)
@@ -21,11 +20,6 @@ This script automates the following key steps involved in submitting samples to 
 4. **AMR Antibiogram submission** is not ready yet, but it will be added in the future.
 
 ## Submission Process
-
-### Flowchart Diagram
-Below is a flowchart diagram that illustrates the submission process:
-
-![Flowchart Diagram](diagrams/flowcharts.png)
 
 ### 1. Register Sample
 Sample registration is performed via the ENA API, using a Sample Set XML and a Submission XML.
