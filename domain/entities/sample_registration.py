@@ -7,6 +7,7 @@ from core.loguru import logger
 from domain.services.abstract_api_submission_service import AbstractAPISubmissionService
 from exceptions import ResponseError
 from schemas.accessions import SampleAccessions
+from schemas.submit_files import SubmitFiles
 from use_cases.receipt_utils.parse_sample_accessions import parse_sample_accessions_from_response
 from use_cases.receipt_utils.save_receipt import save_receipt
 from use_cases.validate_xml_file import validate_xml_file
@@ -34,7 +35,7 @@ class SampleRegistration(BaseModel):
 
         logger.info('Registering Sample to ENA...')
         r = self.api_submission_service.submit_files(
-            files={'SUBMISSION': self.submission_xml_path, 'SAMPLE': self.sample_set_xml_path},
+            files=SubmitFiles(SUBMISSION=self.submission_xml_path, SAMPLE=self.sample_set_xml_path),
             ena_user=self.ena_username, ena_pass=self.ena_password, test=self.test)
         if r.status_code != 200:
             raise ResponseError(response=r)

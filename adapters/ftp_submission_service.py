@@ -3,7 +3,7 @@ import ftplib
 from core.config import settings
 from core.loguru import logger
 from domain.services.abstract_ftp_submission_service import AbstractFTPSubmissionService
-from schemas.read_file import File
+from schemas.read_file import ReadFile
 
 
 def ftps_upload(file_source_path: str, ftp: ftplib.FTP_TLS, target_filename: str, test: bool):
@@ -36,7 +36,7 @@ def ftps_upload(file_source_path: str, ftp: ftplib.FTP_TLS, target_filename: str
 
 
 class FTPSubmissionService(AbstractFTPSubmissionService):
-    def upload_file(self, file: File, ena_user: str, ena_pass: str, ena_ftp_upload_dir: str,
+    def upload_file(self, file: ReadFile, ena_user: str, ena_pass: str, ena_ftp_upload_dir: str,
                     test: bool) -> None:
         with ftplib.FTP_TLS() as ftp:
             hostname = settings.ENA_HOST

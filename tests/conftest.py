@@ -9,10 +9,11 @@ from core.config import settings
 from core.loguru import logger
 from domain.services.abstract_api_submission_service import AbstractAPISubmissionService
 from exceptions import WebinCLIFileValidationError
+from schemas.submit_files import SubmitFiles
 
 
 class MockAPISampleSubmissionService(AbstractAPISubmissionService):
-    def submit_files(self, files: dict[str, str], ena_user: str, ena_pass: str, test: bool) -> Response:
+    def submit_files(self, files: SubmitFiles, ena_user: str, ena_pass: str, test: bool) -> Response:
         mock_response = Response()
         mock_response.status_code = 200
         mock_response._content = b"""<?xml version="1.0" encoding="UTF-8"?>
@@ -35,7 +36,7 @@ class MockAPISampleSubmissionService(AbstractAPISubmissionService):
 
 
 class MockAPIRawReadsSubmissionService(AbstractAPISubmissionService):
-    def submit_files(self, files: dict[str, str], ena_user: str, ena_pass: str, test: bool) -> Response:
+    def submit_files(self, files: SubmitFiles, ena_user: str, ena_pass: str, test: bool) -> Response:
         mock_response = Response()
         mock_response.status_code = 200
         mock_response._content = b"""<?xml version="1.0" encoding="UTF-8"?>

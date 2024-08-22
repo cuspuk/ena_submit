@@ -6,11 +6,11 @@ from adapters.ftp_submission_service import FTPSubmissionService
 from core.loguru import logger
 from domain.services.abstract_ftp_submission_service import AbstractFTPSubmissionService
 from exceptions import ReadsExportMissingFileError
-from schemas.read_file import File
+from schemas.read_file import ReadFile
 
 
 class FTPReadFilesUpload(BaseModel):
-    reads: list[File]
+    reads: list[ReadFile]
     ena_username: str
     ena_password: str
     ena_ftp_upload_dir: str

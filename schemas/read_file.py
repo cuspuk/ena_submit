@@ -3,7 +3,7 @@ import os
 from pydantic import BaseModel, field_validator
 
 
-class File(BaseModel):
+class ReadFile(BaseModel):
     absolute_filepath: str
     target_filename: str
 

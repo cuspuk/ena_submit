@@ -4,7 +4,7 @@ from typing import List
 
 from pydantic import BaseModel, field_validator
 
-from schemas.read_file import File
+from schemas.read_file import ReadFile
 
 
 class SubmitConfig(BaseModel):
@@ -18,8 +18,8 @@ class SubmitConfig(BaseModel):
     experiment_set_xml_path: str
     run_set_xml_path: str
     manifest_json_path: str
-    reads: List[File]
-    antibiograms: List[File] | None = None
+    reads: List[ReadFile]
+    antibiograms: List[ReadFile] | None = None
 
     @field_validator('webin_cli_path', 'sample_set_xml_path', 'submission_xml_path',
                      'experiment_set_xml_path', 'run_set_xml_path', 'manifest_json_path', mode='before')
