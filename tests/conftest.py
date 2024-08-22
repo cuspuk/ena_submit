@@ -31,7 +31,7 @@ class MockAPISampleSubmissionService(AbstractAPISubmissionService):
             """
         return mock_response
 
-    def fetch_biosample_accession(self, sample_accession: str, ena_user: str, ena_pass: str) -> str:
+    def fetch_biosample_accession(self, sample_accession: str, ena_user: str, ena_pass: str, test: bool) -> str:
         return 'SAMEA130841939'
 
 
@@ -53,7 +53,7 @@ class MockAPIRawReadsSubmissionService(AbstractAPISubmissionService):
             """
         return mock_response
 
-    def fetch_biosample_accession(self, sample_accession: str, ena_user: str, ena_pass: str) -> str:
+    def fetch_biosample_accession(self, sample_accession: str, ena_user: str, ena_pass: str, test: bool) -> str:
         return 'SAMEA130841939'
 
 

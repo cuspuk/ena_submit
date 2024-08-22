@@ -10,5 +10,5 @@ class AbstractAPISubmissionService(ABC):
         pass
 
     @abstractmethod
-    def fetch_biosample_accession(self, sample_accession: str, ena_user: str, ena_pass: str) -> str:
+    def fetch_biosample_accession(self, sample_accession: str, ena_user: str, ena_pass: str, test: bool) -> str:
         pass

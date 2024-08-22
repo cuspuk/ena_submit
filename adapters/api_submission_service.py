@@ -15,14 +15,19 @@ class APISubmissionService(AbstractAPISubmissionService):
         files_dict = files.model_dump(exclude_unset=True)
 
         return requests.post(
-            url,
+            url=url,
             auth=(ena_user, ena_pass),
             files={key: open(path) for key, path in files_dict.items()}
         )
 
-    def fetch_biosample_accession(self, sample_accession: str, ena_user: str, ena_pass: str) -> str:
+    def fetch_biosample_accession(self, sample_accession: str, ena_user: str, ena_pass: str, test: bool) -> str:
+        if test:
+            url = f'https://wwwdev.ebi.ac.uk/ena/submit/drop-box/cli/reference/sample/{sample_accession}'
+        else:
+            url = f'https://www.ebi.ac.uk/ena/submit/drop-box/cli/reference/sample/{sample_accession}'
+
         response = requests.get(
-            f'https://www.ebi.ac.uk/ena/submit/drop-box/cli/reference/sample/{sample_accession}',
+            url=url,
             headers={'Accept': 'application/json'},
             auth=HTTPBasicAuth(ena_user, ena_pass)
         )

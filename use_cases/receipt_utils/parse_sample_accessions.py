@@ -16,7 +16,7 @@ def get_accession_inside_double_quotes_from_log(log_str: str, pattern: str) -> s
         raise Exception(f'Failed to parse accession from log string {log_str}. Provided {pattern=}')
 
 
-def parse_sample_accessions_from_response(response: requests.Response, ena_user: str, ena_pass: str,
+def parse_sample_accessions_from_response(response: requests.Response, ena_user: str, ena_pass: str, test: bool,
                                           api_submission_service: AbstractAPISubmissionService) -> SampleAccessions:
     """
     Response is in XML format looking sth like this:
@@ -75,6 +75,7 @@ def parse_sample_accessions_from_response(response: requests.Response, ena_user:
                             sample_accession=submission_accession,
                             ena_user=ena_user,
                             ena_pass=ena_pass,
+                            test=test
                         )
                         return SampleAccessions(
                             submission_accession=submission_accession,

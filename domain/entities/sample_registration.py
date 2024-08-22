@@ -48,7 +48,8 @@ class SampleRegistration(BaseModel):
             response=r,
             ena_user=self.ena_username,
             ena_pass=self.ena_password,
-            api_submission_service=self.api_submission_service
+            api_submission_service=self.api_submission_service,
+            test=self.test
         )
 
         logger.info(
