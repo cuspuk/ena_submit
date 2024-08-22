@@ -39,7 +39,7 @@ Sample registration is performed via the ENA API, using a Sample Set XML and a S
 
 This output includes sample accessions necessary for submitting Raw Reads and Assembly data.
 
-Detailed information about these input / output files can be found in the [ENA programmatic submission documentation](https://ena-docs.readthedocs.io/en/latest/submit/samples/programmatic.html).
+Detailed information about these input / output files can be found in the [ENA Register Samples Programmatically documentation](https://ena-docs.readthedocs.io/en/latest/submit/samples/programmatic.html).
 
 ### 2. Submit Raw Reads
 Raw Reads submission involves uploading data files to the ENA FTP server and subsequently submitting them using Experiment XML and Run XML. The process uses the Sample Accession obtained during Sample Registration.
