@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <RUN_SET>
-  <RUN alias="ENA Run - uvzsr-PT_24_00014-A12-AR_24_00000940" center_name="Laboratory of Genomics and Bioinformatics, Comenius University Science Park;Public Health Authority of the Slovak Republic">
-    <EXPERIMENT_REF refname="ENA Experiment - uvzsr-PT_24_00014-A12-AR_24_00000940"/>
+  <RUN alias="ENA Run" center_name="Laboratory of Genomics and Bioinformatics">
+    <EXPERIMENT_REF refname="ENA Experiment Testing"/>
     <DATA_BLOCK>
       <FILES>
-        <FILE filename="uvzsr-PT_24_00014-A12-AR_24_00000940-uvzsr-PT_24_00014-A12-AR_24_00000940_R1.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="effdd6da9375508d1d1bcf5cb16bd081"/>
-        <FILE filename="uvzsr-PT_24_00014-A12-AR_24_00000940-uvzsr-PT_24_00014-A12-AR_24_00000940_R2.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="6f5cf700dcbcc22be797a02680f3fd18"/>
+        <FILE filename="testing_R1.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="effdd6da9375508d1d1bcf5cb16bd081"/>
+        <FILE filename="testing_R2.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="6f5cf700dcbcc22be797a02680f3fd18"/>
       </FILES>
     </DATA_BLOCK>
   </RUN>

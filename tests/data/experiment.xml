@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <EXPERIMENT_SET>
-  <EXPERIMENT alias="ENA Experiment - uvzsr-PT_24_00014-A12-AR_24_00000940">
-    <TITLE>ENA Experiment - uvzsr-PT_24_00014-A12-AR_24_00000940</TITLE>
+  <EXPERIMENT alias="ENA Experiment Testing">
+    <TITLE>ENA Experiment</TITLE>
     <STUDY_REF accession="PRJEB72521" />
     <DESIGN>
       <DESIGN_DESCRIPTION />
-      <SAMPLE_DESCRIPTOR accession="test_accession" />
+      <SAMPLE_DESCRIPTOR accession="" />
       <LIBRARY_DESCRIPTOR>
         <LIBRARY_NAME />
         <LIBRARY_STRATEGY>WGS</LIBRARY_STRATEGY>

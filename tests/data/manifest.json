@@ -1,7 +1,7 @@
 {
     "study": "PRJEB72521",
-    "sample": "ERS30843922",
-    "assemblyname": "uvzsr-PT_24_00014-A12-AR_24_00000940",
+    "sample": "",
+    "assemblyname": "testing-assemblyname",
     "assembly_type": "isolate",
     "coverage": 384.5134,
     "program": "unicycler,spades",

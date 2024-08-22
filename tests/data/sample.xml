@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <SAMPLE_SET>
-  <SAMPLE alias="ENA sample - uvzsr-PT_24_00014-A12-AR_24_00000940" center_name="Laboratory of Genomics and Bioinformatics, Comenius University Science Park;Public Health Authority of the Slovak Republic">
-    <TITLE>uvzsr-PT_24_00014-A12-AR_24_00000940 940-24 Providencia stuartii</TITLE>
+  <SAMPLE alias="ENA sample Testing" center_name="Laboratory of Genomics and Bioinformatics">
+    <TITLE>sample name 940-24 Providencia stuartii</TITLE>
     <SAMPLE_NAME>
       <TAXON_ID>588</TAXON_ID>
       <SCIENTIFIC_NAME>Providencia stuartii</SCIENTIFIC_NAME>
@@ -40,7 +40,7 @@
       </SAMPLE_ATTRIBUTE>
       <SAMPLE_ATTRIBUTE>
         <TAG>strain</TAG>
-        <VALUE>uvzsr-PT_24_00014-A12-AR_24_00000940</VALUE>
+        <VALUE>sample name</VALUE>
         <UNITS></UNITS>
       </SAMPLE_ATTRIBUTE>
       <SAMPLE_ATTRIBUTE>

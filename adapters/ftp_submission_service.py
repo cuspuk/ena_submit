@@ -6,8 +6,16 @@ from domain.services.abstract_ftp_submission_service import AbstractFTPSubmissio
 from schemas.read_file import File
 
 
-def _ftps_upload(file_source_path: str, ftp: ftplib.FTP_TLS, target_filename: str, test: bool):
+def ftps_upload(file_source_path: str, ftp: ftplib.FTP_TLS, target_filename: str, test: bool):
     tmp_filename = f'{target_filename}.tmp'
+
+    existing_files = ftp.nlst()
+
+    if tmp_filename in existing_files:
+        raise FileExistsError(f'{tmp_filename=} already exists in ENA FTP server')
+
+    if target_filename in existing_files:
+        raise FileExistsError(f'{target_filename=} already exists in ENA FTP server')
 
     with open(file_source_path, 'rb') as source_file:
         response = ftp.storbinary(f'STOR {tmp_filename}', source_file)
@@ -38,7 +46,7 @@ class FTPSubmissionService(AbstractFTPSubmissionService):
             ftp.login(user=ena_user, passwd=ena_pass)
             ftp.cwd(ena_ftp_upload_dir)
 
-            _ftps_upload(file_source_path=file.absolute_filepath, ftp=ftp,
-                         target_filename=file.target_filename, test=test)
+            ftps_upload(file_source_path=file.absolute_filepath, ftp=ftp, target_filename=file.target_filename,
+                        test=test)
 
         logger.info(f'{file.absolute_filepath=} uploaded to ENA FTP server')
