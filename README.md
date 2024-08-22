@@ -29,7 +29,7 @@ Sample registration is performed via the ENA API, using a Sample Set XML and a S
 - Submission XML
 
 **Output:**
-- Receipt XML (stored in the user-defined Results directory)
+- Receipt XML sample_receipt.xml (stored in the user-defined Results directory)
 
 This output includes sample accessions necessary for submitting Raw Reads and Assembly data.
 
@@ -53,7 +53,7 @@ Within the Experiment XML, it is necessary to leave the accession attribute empt
 Sample Accession will be automatically added after Sample Registration.
 
 **Output:**
-- Receipt XML (stored in the user-defined Results directory)
+- Receipt XML raw_reads_receipt.xml (stored in the user-defined Results directory)
 
 Detailed information about these input / output files can be found in the [ENA Raw Reads submission documentation](https://ena-docs.readthedocs.io/en/latest/submit/reads/programmatic.html).
 
