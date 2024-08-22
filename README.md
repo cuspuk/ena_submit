@@ -104,7 +104,10 @@ The script requires a configuration file in JSON format. Below is an example str
     "run_set_xml_path": "Path to the Run Set XML",
     "manifest_json_path": "Path to the Manifest JSON",
     "reads": [
-        {"absolute_filepath": "Path to the FASTQ/BAM file", "target_filename": "Unique filename for the ENA FTP server (must also be specified within the Run XML)"}
+        {
+          "absolute_filepath": "Path to the FASTQ/BAM file",
+          "target_filename": "Unique filename for the ENA FTP server (must also be specified within the Run XML)"
+        }
     ]
 }
 ```
