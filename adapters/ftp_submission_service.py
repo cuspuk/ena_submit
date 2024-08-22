@@ -12,7 +12,8 @@ def ftps_upload(file_source_path: str, ftp: ftplib.FTP_TLS, target_filename: str
     existing_files = ftp.nlst()
 
     if tmp_filename in existing_files:
-        raise FileExistsError(f'{tmp_filename=} already exists in ENA FTP server')
+        logger.warning(f'{tmp_filename=} already exists in ENA FTP server. Deleting and continuing...')
+        ftp.delete(tmp_filename)
 
     if target_filename in existing_files:
         raise FileExistsError(f'{target_filename=} already exists in ENA FTP server')

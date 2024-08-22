@@ -5,7 +5,7 @@
     <STUDY_REF accession="PRJEB72521" />
     <DESIGN>
       <DESIGN_DESCRIPTION />
-      <SAMPLE_DESCRIPTOR accession="" />
+      <SAMPLE_DESCRIPTOR accession="ERS30843922" />
       <LIBRARY_DESCRIPTOR>
         <LIBRARY_NAME />
         <LIBRARY_STRATEGY>WGS</LIBRARY_STRATEGY>
