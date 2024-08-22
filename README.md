@@ -86,6 +86,7 @@ More information about Manifest file can be found in the [ENA Webin-CLI Submissi
 Before running the script, ensure you have the following installed:
 - Python 3.12
 - Pipenv
+- Downloaded ENA Webin-CLI JAR (version > 7.3.1) from the [ENA Webin-CLI GitHub repository](https://github.com/enasequence/webin-cli/releases)
 
 ## JSON Config File Structure
 The script requires a configuration file in JSON format. Below is an example structure of the config file:
