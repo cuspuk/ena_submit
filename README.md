@@ -1,6 +1,6 @@
 # ENA Sample Submission Automation Script
 
-This repository contains a Python script designed to automate the submission process of biological samples to the European Nucleotide Archive (ENA). It specifically supports the submission of COVID-19 / Respiratory, Influenza, and Antimicrobial resistance samples (AMR). The script is configured to handle the submission of one sample at a time.
+This repository contains a Python script designed to automate the submission process of biological samples to the European Nucleotide Archive (ENA). The script is configured to handle the submission of one sample at a time.
 
 ## Table of Contents
 - [Overview](#overview)
