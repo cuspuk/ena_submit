@@ -21,7 +21,7 @@ This script automates the following key steps involved in submitting samples to 
 
 ## Submission Process
 
-For a detailed visual overview of the project's architecture and workflows, please refer to the diagrams available in our [Wiki section](https://github.com/cuspuk/ena_submit.wiki.git).
+For a detailed visual overview of the project's architecture and workflows, please refer to the diagrams available in our [Wiki section](https://github.com/cuspuk/ena_submit/wiki/ENA-Sample-Submission-Automation-Script).
 
 
 ### 1. Register Sample
