@@ -21,6 +21,9 @@ This script automates the following key steps involved in submitting samples to 
 
 ## Submission Process
 
+For a detailed visual overview of the project's architecture and workflows, please refer to the diagrams available in our [Wiki section](https://github.com/cuspuk/ena_submit.wiki.git).
+
+
 ### 1. Register Sample
 Sample registration is performed via the ENA API, using a Sample Set XML and a Submission XML.
 
