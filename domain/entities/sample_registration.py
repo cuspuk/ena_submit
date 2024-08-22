@@ -43,8 +43,13 @@ class SampleRegistration(BaseModel):
         save_receipt(text=r.text, receipt_path=receipt_path)
         logger.info(f'Sample receipt has been saved to: {receipt_path}')
 
-        sample_accessions = parse_sample_accessions_from_response(r, ena_user=self.ena_username,
-                                                                  ena_pass=self.ena_password)
+        sample_accessions = parse_sample_accessions_from_response(
+            response=r,
+            ena_user=self.ena_username,
+            ena_pass=self.ena_password,
+            api_submission_service=self.api_submission_service
+        )
+
         logger.info(
             f'Sample has been registered into ENA. Sample accession: {sample_accessions.submission_accession} '
             f'Biosample accession: {sample_accessions.biosample_accession}')
