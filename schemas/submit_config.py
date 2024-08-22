@@ -22,13 +22,13 @@ class SubmitConfig(BaseModel):
     antibiograms: List[ReadFile] | None = None
 
     @field_validator('webin_cli_path', 'sample_set_xml_path', 'submission_xml_path',
-                     'experiment_set_xml_path', 'run_set_xml_path', 'manifest_json_path', mode='before')
+                     'experiment_set_xml_path', 'run_set_xml_path', 'manifest_json_path', mode='after')
     def check_file_exists(cls, v):
         if not os.path.isfile(v):
             raise ValueError(f'The file "{v}" does not exist.')
         return v
 
-    @field_validator('results_dir', mode='before')
+    @field_validator('results_dir', mode='after')
     def check_directory_exists(cls, v):
         if not os.path.isdir(v):
             raise ValueError(f'The directory "{v}" does not exist.')
