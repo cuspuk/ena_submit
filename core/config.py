@@ -1,7 +1,7 @@
 import os
 import pathlib
 
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
@@ -10,11 +10,8 @@ class Settings(BaseSettings):
     XSD_SCHEMAS_PATH: pathlib.Path = os.path.join(ROOT_DIR_PATH, 'schemas', 'xsd_schemas')
 
     ENA_HOST: str = 'webin2.ebi.ac.uk'
-    ENA_WEBIN_CLI: str
 
     LOGGING_FILE: str = os.path.join('logs', 'logs.txt')
-
-    model_config = SettingsConfigDict(env_file='.env', env_file_encoding='utf-8')
 
 
 settings = Settings()
