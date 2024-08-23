@@ -8,6 +8,12 @@ This script automates the following key steps involved in submitting samples to 
 3. **Assembly Submission** using the ENA Webin CLI.
 4. **AMR Antibiogram submission** is not ready yet, but it will be added in the future.
 
+---
+
+**This work was supported by the European Union’s Horizon Europe research and innovation programme funded under grant agreement ID: 101046203 (BY-COVID).**
+
+---
+
 ## Table of Contents
 - [Pre-requirements](#pre-requirements)
 - [JSON Config File Structure](#json-config-file-structure)
