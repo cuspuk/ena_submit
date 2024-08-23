@@ -1,2 +1,133 @@
-# ena_submit
-Automatized submission of data to ENA (European Nucleotide Archive)
+# ENA Sample Submission Automation Script
+
+This repository contains a Python script designed to automate the submission process of biological samples to the European Nucleotide Archive (ENA). The script is configured to handle the submission of one sample at a time.
+
+This script automates the following key steps involved in submitting samples to the ENA:
+1. **Sample Registration** using the ENA API.
+2. **Raw Reads Submission** to the ENA, including file upload to the FTP server and metadata submission.
+3. **Assembly Submission** using the ENA Webin CLI.
+4. **AMR Antibiogram submission** is not ready yet, but it will be added in the future.
+
+---
+
+**This work was supported by the European Union’s Horizon Europe research and innovation programme funded under grant agreement ID: 101046203 (BY-COVID).**
+
+---
+
+## Table of Contents
+- [Pre-requirements](#pre-requirements)
+- [JSON Config File Structure](#json-config-file-structure)
+- [Running the Script](#running-the-script)
+- [Submission Process](#submission-process)
+  - [1. Register Sample](#1-sample-registration)
+  - [2. Submit Raw Reads](#2-submit-raw-reads)
+  - [3. Submit Assembly](#3-submit-assembly)
+
+## Pre-requirements
+Before running the script, ensure you have the following installed:
+- Python 3.12
+- Pipenv
+- Downloaded ENA Webin-CLI JAR (version > 7.3.1) from the [ENA Webin-CLI GitHub repository](https://github.com/enasequence/webin-cli/releases)
+
+## JSON Config File Structure
+The script requires a configuration file in JSON format. Below is an example structure of the config file:
+
+```json
+{
+    "ena_username": "ENA username",
+    "ena_password": "ENA password",
+    "webin_cli_path": "Path to webin-cli JAR version > 7.3.1",
+    "results_dir": "Path to results directory where the receipt XMLs, submitted files and Assembly logs will be stored",
+    "test": "Boolean value (True for test submission to the ENA dev server, False for production submission to the ENA prod server)",
+    "sample_set_xml_path": "Path to the Sample Set XML",
+    "submission_xml_path": "Path to the Submission XML",
+    "experiment_set_xml_path": "Path to the Experiment XML",
+    "run_set_xml_path": "Path to the Run Set XML",
+    "manifest_json_path": "Path to the Manifest JSON",
+    "reads": [
+        {
+          "absolute_filepath": "Path to the FASTQ/BAM file",
+          "target_filename": "Unique filename for the ENA FTP server (must also be specified within the Run XML)"
+        }
+    ]
+}
+```
+
+## Running the Script
+
+1. Activate the virtual environment (using pipenv):
+
+    ```shell
+    pipenv shell
+    ```
+
+2. Install the required dependencies:
+
+    ```shell
+   pipenv sync
+    ```
+
+3. Run the submission script:
+
+    ```shell
+    python main.py --config submit_config.json
+    ```
+
+## Submission Process
+For a detailed visual overview of the project's architecture and workflows, please refer to the diagrams available in our [Wiki section](https://github.com/cuspuk/ena_submit/wiki/ENA-Sample-Submission-Automation-Script).
+
+
+### 1. Register Sample
+Sample registration is performed via the ENA API, using a Sample Set XML and a Submission XML.
+
+**Inputs:**
+- Sample Set XML
+- Submission XML
+
+**Output:**
+- Receipt XML sample_receipt.xml (stored in the user-defined Results directory)
+
+This output includes sample accessions necessary for submitting Raw Reads and Assembly data.
+
+Detailed information about these input / output files can be found in the [ENA Register Samples Programmatically documentation](https://ena-docs.readthedocs.io/en/latest/submit/samples/programmatic.html).
+
+### 2. Submit Raw Reads
+Raw Reads submission involves uploading data files to the ENA FTP server and subsequently submitting them using Experiment XML and Run XML. The process uses the Sample Accession obtained during Sample Registration.
+
+**Inputs:**
+- Read files
+- Experiment Set XML
+- Run Set XML
+- Submission XML
+
+Within the Experiment XML, it is necessary to leave the accession attribute empty within the SAMPLE_DESCRIPTION element as follows:
+
+```shell
+    <SAMPLE_DESCRIPTOR accession="" />
+```
+
+Sample Accession will be automatically added after Sample Registration.
+
+**Output:**
+- Receipt XML raw_reads_receipt.xml (stored in the user-defined Results directory)
+
+Detailed information about these input / output files can be found in the [ENA Raw Reads submission documentation](https://ena-docs.readthedocs.io/en/latest/submit/reads/programmatic.html).
+
+### 3. Submit Assembly
+Assembly submission is managed using the ENA Webin CLI. The script submits an Assembly Manifest file.
+
+**Inputs:**
+- Assembly Manifest JSON
+
+Within the Manifest JSON file, it is necessary to leave the sample attribute empty as follows:
+
+```shell
+    "sample": "",
+```
+
+Sample Accession to the sample attribute will be automatically added after Sample Registration.
+
+**Outputs:**
+- Logs generated by the ENA Webin CLI (stored in the user-defined Results directory)
+
+More information about Manifest file can be found in the [ENA Webin-CLI Submission documentation](https://ena-docs.readthedocs.io/en/latest/submit/general-guide/webin-cli.html).

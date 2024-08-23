@@ -1,0 +1,14 @@
+.env
+.testing_env
+.idea
+logs/
+*pycache*
+*.pyc
+testing/pv_data
+
+# OS generated files
+.DS_Store
+.DS_Store?
+
+# Tests results
+tests/results/

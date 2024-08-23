@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<RUN_SET>
+  <RUN alias="ENA Run" center_name="Laboratory of Genomics and Bioinformatics">
+    <EXPERIMENT_REF refname="ENA Experiment Testing"/>
+    <DATA_BLOCK>
+      <FILES>
+        <FILE filename="testing_R1.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="effdd6da9375508d1d1bcf5cb16bd081"/>
+        <FILE filename="testing_R2.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="6f5cf700dcbcc22be797a02680f3fd18"/>
+      </FILES>
+    </DATA_BLOCK>
+  </RUN>
+</RUN_SET>

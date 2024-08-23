@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<SAMPLE_SET>
+  <SAMPLE alias="ENA sample Testing" center_name="Laboratory of Genomics and Bioinformatics">
+    <TITLE>sample name 940-24 Providencia stuartii</TITLE>
+    <SAMPLE_NAME>
+      <TAXON_ID>588</TAXON_ID>
+      <SCIENTIFIC_NAME>Providencia stuartii</SCIENTIFIC_NAME>
+      <COMMON_NAME></COMMON_NAME>
+    </SAMPLE_NAME>
+    <SAMPLE_ATTRIBUTES>
+      <SAMPLE_ATTRIBUTE>
+        <TAG>collection date</TAG>
+        <VALUE>2023-04-09T00:00:00</VALUE>
+        <UNITS></UNITS>
+      </SAMPLE_ATTRIBUTE>
+      <SAMPLE_ATTRIBUTE>
+        <TAG>geographic location (country and/or sea)</TAG>
+        <VALUE>Slovakia</VALUE>
+        <UNITS></UNITS>
+      </SAMPLE_ATTRIBUTE>
+      <SAMPLE_ATTRIBUTE>
+        <TAG>host health state</TAG>
+        <VALUE>diseased</VALUE>
+        <UNITS></UNITS>
+      </SAMPLE_ATTRIBUTE>
+      <SAMPLE_ATTRIBUTE>
+        <TAG>host scientific name</TAG>
+        <VALUE>Homo sapiens</VALUE>
+        <UNITS></UNITS>
+      </SAMPLE_ATTRIBUTE>
+      <SAMPLE_ATTRIBUTE>
+        <TAG>isolation_source</TAG>
+        <VALUE>rectal swab</VALUE>
+        <UNITS></UNITS>
+      </SAMPLE_ATTRIBUTE>
+      <SAMPLE_ATTRIBUTE>
+        <TAG>isolate</TAG>
+        <VALUE>NA</VALUE>
+        <UNITS></UNITS>
+      </SAMPLE_ATTRIBUTE>
+      <SAMPLE_ATTRIBUTE>
+        <TAG>strain</TAG>
+        <VALUE>sample name</VALUE>
+        <UNITS></UNITS>
+      </SAMPLE_ATTRIBUTE>
+      <SAMPLE_ATTRIBUTE>
+        <TAG>ENA-CHECKLIST</TAG>
+        <VALUE>ERC000028</VALUE>
+        <UNITS></UNITS>
+      </SAMPLE_ATTRIBUTE>
+    </SAMPLE_ATTRIBUTES>
+  </SAMPLE>
+</SAMPLE_SET>
